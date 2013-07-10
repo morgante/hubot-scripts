@@ -47,6 +47,7 @@ module.exports = function(robot) {
 	    {
 	        
 	        cleverbot.write( msg.match[1], function( cleverness ) {
+	            console.log( cleverness );
 	            msg.reply( cleverness.message );
 	        });
 	        
