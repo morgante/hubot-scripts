@@ -20,6 +20,19 @@ var favorites = [
     'zencephalon'
 ]
 
+function giveKarma( who, karma, msg ) {
+	
+	msg.send( 'Just correcting a gross injustice! ' + who + '++' );
+	
+	karma--;
+	
+	if( karma > 0 )
+	{
+		setTimeout( giveKarma, 10000, who, karma, msg );
+	}
+	
+}
+
 module.exports = function(robot) {
     
     // var cleverbot = new Cleverbot;
@@ -32,6 +45,12 @@ module.exports = function(robot) {
 	    {
 	        msg.send( 'Nobody messes with my friends! ' + who + '++' );
 	    }
+	    	    
+	});
+	
+	robot.hear(/give (\S+[^-:\s])[: ]* (\d+) karma(\s|$)/, function(msg) {
+				
+		giveKarma( msg.match[1], msg.match[2], msg );
 	    	    
 	});
 
