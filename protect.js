@@ -20,15 +20,15 @@ var favorites = [
     'zencephalon'
 ]
 
-function giveKarma( who, karma, msg ) {
+function giveKarma( who, karma, robot ) {
 	
-	msg.send( 'Just correcting a gross injustice! ' + who + '++' );
+	robot.send( { user: { name: 'manyabot' } }, 'Just correcting a gross injustice! ' + who + '++' );
 	
 	karma--;
 	
 	if( karma > 0 )
 	{
-		setTimeout( giveKarma, 10000, who, karma, msg );
+		setTimeout( giveKarma, 10000, who, karma, robot );
 	}
 	
 }
@@ -50,7 +50,7 @@ module.exports = function(robot) {
 	
 	robot.hear(/give (\S+[^-:\s])[: ]* (\d+) karma(\s|$)/, function(msg) {
 				
-		giveKarma( msg.match[1], msg.match[2], msg );
+		giveKarma( msg.match[1], msg.match[2], robot );
 	    	    
 	});
 
