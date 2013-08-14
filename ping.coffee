@@ -9,6 +9,7 @@
 
 module.exports = (robot) ->
   robot.respond /PING$/i, (msg) ->
+    console.log "hello"
     msg.send "PONG"
 
   robot.respond /ECHO (.*)$/i, (msg) ->
@@ -18,6 +19,9 @@ module.exports = (robot) ->
     msg.send "Server time is: #{new Date()}"
 
   robot.respond /DIE$/i, (msg) ->
-    msg.send "Goodbye, cruel world."
-    process.exit 0
+    if robot.auth.hasRole msg.envelope.user, 'killing'
+      msg.send "Goodbye, crueler world."
+      process.exit 0
+    else
+      msg.send "I'm immortal."
 
