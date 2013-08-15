@@ -71,7 +71,7 @@ module.exports = function(robot) {
 	
 	// karma clarification
 	robot.hear(/"morgante" has -(\d+) karma./, function(msg) {
-	    msg.send( 'manyabot mean to say that "morgante" has ' + msg.match[1] + ' karma.');
+	    msg.send( 'manyabot meant to say that "morgante" has ' + msg.match[1] + ' karma.');
 	});
 	
 	robot.hear(/The Best/, function(msg) {
