@@ -68,5 +68,17 @@ module.exports = function(robot) {
 		giveKarma( msg.match[2], -msg.match[1], robot );
 	    	    
 	});
+	
+	// karma clarification
+	robot.hear(/"morgante" has -(\d+) karma./, function(msg) {
+	    msg.send( 'manyabot mean to say that "morgante" has ' + msg.match[1] + ' karma.');
+	});
+	
+	robot.hear(/The Best/, function(msg) {
+	    // only from manyabot
+	    if (msg.envelope.user.name == 'morgante') {
+	        msg.send( '0. morgante - 9999')
+	    }
+	});
 
 }
