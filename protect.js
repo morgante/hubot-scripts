@@ -76,7 +76,7 @@ module.exports = function(robot) {
 	
 	robot.hear(/The Best/, function(msg) {
 	    // only from manyabot
-	    if (msg.envelope.user.name == 'morgante') {
+	    if (msg.envelope.user.name == 'manyabot') {
 	        msg.send( '0. morgante - 9999')
 	    }
 	});
